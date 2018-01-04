@@ -5,6 +5,7 @@ app/*.map
 app/environments/*.ts
 app/environments/*.js
 app/weather-widget/*.js
+app/weather-widget/service/weather.service.js
 .env
 *.js
 
