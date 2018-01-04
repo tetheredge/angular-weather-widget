@@ -2,5 +2,9 @@ node_modules/
 *.map
 app/*.js
 app/*.map
-
+app/environments/*.ts
+app/environments/*.js
+app/weather-widget/*.js
+.env
+*.js
 
