@@ -13,7 +13,8 @@ var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
-var constants_1 = require('../constants/constants');
+//import { FORECAST_KEY, FORECAST_ROOT, GOOGLE_KEY, GOOGLE_ROOT } from '../constants/constants';
+var environment_1 = require('../../environments/environment');
 var WeatherService = (function () {
     function WeatherService(jsonp, http) {
         this.jsonp = jsonp;
@@ -35,7 +36,7 @@ var WeatherService = (function () {
         }
     };
     WeatherService.prototype.getCurrentWeather = function (lat, long) {
-        var url = constants_1.FORECAST_ROOT + constants_1.FORECAST_KEY + "/" + lat + "," + long;
+        var url = environment_1.environment.forecastRoot + environment_1.environment.forecastKey + "/" + lat + "," + long;
         var queryParams = "?callback=JSONP_CALLBACK";
         return this.jsonp.get(url + queryParams)
             .map(function (data) { return data.json(); })
@@ -45,8 +46,8 @@ var WeatherService = (function () {
         });
     };
     WeatherService.prototype.getLocationName = function (lat, long) {
-        var url = constants_1.GOOGLE_ROOT;
-        var queryParams = "?latlng=" + lat + "," + long + "&key=" + constants_1.GOOGLE_KEY;
+        var url = environment_1.environment.googleRoot;
+        var queryParams = "?latlng=" + lat + "," + long + "&key=" + environment_1.environment.googleKey;
         return this.http.get(url + queryParams)
             .map(function (loc) { return loc.json(); })
             .catch(function (err) {

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { FORECAST_KEY, FORECAST_ROOT, GOOGLE_KEY, GOOGLE_ROOT } from '../constants/constants';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 
@@ -30,7 +30,7 @@ export class WeatherService {
     }
 
     getCurrentWeather(lat: number, long: number): Observable<any> {
-	const url = FORECAST_ROOT + FORECAST_KEY + "/" + lat + "," + long;
+	const url = environment.forecastRoot + environment.forecastKey + "/" + lat + "," + long;
 	const queryParams = "?callback=JSONP_CALLBACK";
 
 	return this.jsonp.get(url + queryParams)
@@ -42,8 +42,8 @@ export class WeatherService {
     }
 
     getLocationName(lat: number, long: number): Observable<any> {
-	const url = GOOGLE_ROOT;
-	const queryParams = "?latlng=" + lat + "," + long + "&key=" + GOOGLE_KEY;
+	const url = environment.googleRoot;
+	const queryParams = "?latlng=" + lat + "," + long + "&key=" + environment.googleKey;
 
 	return this.http.get(url + queryParams)
 	    .map(loc => loc.json())
