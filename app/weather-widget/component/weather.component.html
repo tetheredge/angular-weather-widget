@@ -17,6 +17,24 @@
     <p>{{ weatherData.summary }}</p>
   </div>
 
+  <div class="row refresh-icon">
+    <div id="refresh" class="col-xs-12" (click)="refreshData()">
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <div class="row refresh" [class.invisible]="!dataReceived">
+    <div class="col-xs-12">
+      <small class="text-muted">Click to refresh data</small>
+    </div>
+  </div>
+
+  <div class="row last-updated" [class.invisible]="!dataReceived">
+    <div class="col-xs-12">
+      <small class="text-muted">Last Updated: {{ lastUpdated }}</small>
+    </div>
+  </div>
+
   <div class="card-footer" [class.invisible]="!dataReceived">
     <div class="row" id="detail-row">
       <div class="col-xs-5">

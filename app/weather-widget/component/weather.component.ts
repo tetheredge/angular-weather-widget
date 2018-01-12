@@ -24,6 +24,8 @@ export class WeatherComponent implements OnInit {
     currentLocation = "";
     icons = new Skycons();
     dataReceived = false;
+    lastUpdated = new Date().toLocaleString();
+    refreshToggle = false;
 
     constructor(private service: WeatherService) {
 	
@@ -31,6 +33,8 @@ export class WeatherComponent implements OnInit {
 
     ngOnInit() {
 	this.getCurrentLocation();
+	this.lastUpdated;
+	this.refreshToggle;
     }
 
     getCurrentLocation() {
@@ -39,6 +43,8 @@ export class WeatherComponent implements OnInit {
 		this.pos = position;
 		this.getCurrentWeather();
 		this.getLocationName();
+		this.getLastUpdate();
+		this.refreshToggle = false;
 	    },
             err => console.error(err));
     }
@@ -64,9 +70,18 @@ export class WeatherComponent implements OnInit {
 	    });
     }
 
+    getLastUpdate() {
+	this.service.getLastUpdate()
+	    .subscribe(update => {
+		this.lastUpdated = update
+	    });
+    }
+
     toggleUnits() {
-	this.toggleTempUnits();
-	this.toggleSpeedUnits();
+	if(!this.refreshToggle) {
+	    this.toggleTempUnits();
+	    this.toggleSpeedUnits();
+	}
     }
 
     toggleTempUnits() {
@@ -98,5 +113,10 @@ export class WeatherComponent implements OnInit {
 	    this.icons.color = WEATHER_COLORS["default"]["color"];
 	    return WEATHER_COLORS["default"];
 	}
+    }
+
+    refreshData() {
+	this.refreshToggle = true;
+	this.getCurrentLocation();
     }
 }
