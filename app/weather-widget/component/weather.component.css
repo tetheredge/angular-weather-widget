@@ -39,6 +39,15 @@ canvas {
     margin-bottom: 1rem;
 }
 .card-block,
+.refresh-icon {
+    text-align: center;
+}
+.refresh {
+    text-align: center;
+}
+.last-updated {
+    text-align: center;
+}
 .card-footer {
     text-align: center;
 }
@@ -47,6 +56,9 @@ canvas {
 }
 #detail-row {
     font-size: .8rem;
+}
+#refresh {
+    font-size: 1rem;
 }
 #helper-row {
     padding-top: .5rem;
