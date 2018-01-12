@@ -1,7 +1,7 @@
 {
-    "name": "angular2-skeleton",
+    "name": "angular2-weather-widget",
     "version": "1.0.0",
-    "description": "Taylor's Angular2 Skeleton project",
+    "description": "Angular2 Weather Widget",
     "scripts": {
 	"config": "ts-node ./set-env.ts",
 	"start": "npm run config -- && tsc && concurrently \"tsc -w\" \"lite-server\" ",
@@ -12,7 +12,7 @@
     "license": "MIT",
     "repository": {
 	"type": "git",
-	"url": "git@github.com:tetheredge/angular2-skeleton.git"
+	"url": "git@github.com:tetheredge/angular-weather-widget.git"
     },
     "dependencies": {
 	"@angular/common": "2.1.2",
