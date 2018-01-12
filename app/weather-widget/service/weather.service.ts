@@ -52,4 +52,11 @@ export class WeatherService {
 		return Observable.throw(err);
 	    });
     }
+
+    getLastUpdate(): Observable<any> {
+	const last = new Date().toLocaleString()
+	return Observable.create(function(observer) {
+	    observer.next(last);
+	});
+    }
 }
